@@ -17,18 +17,18 @@ const MainLayout = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  max-width: 1920px;
   width: 100%;
+  max-width: 1920px;
   min-height: 100vh;
   padding: 20px;
 
   background-color: #ffffff;
 
   .product_title {
+    width: 100%;
     padding: 0 20px;
     margin: 20px 0 40px 0;
 
-    width: 100%;
     font-size: 90px;
     font-weight: 600;
     line-height: 108px;
@@ -36,6 +36,9 @@ const MainLayout = styled.section`
 `;
 
 const ContentsLayout = styled.section`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
 `;
 
