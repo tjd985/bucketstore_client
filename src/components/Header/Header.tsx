@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { nanoid } from "nanoid";
 import { CiSearch, CiLogin, CiShoppingBasket } from "react-icons/ci";
 
-import HEADER from "../../constants/constants.ts";
+import { HEADER } from "../../constants/constants.ts";
 
 const { MENU_LIST, GROUP_LIST } = HEADER;
 
@@ -68,7 +68,7 @@ const Container = styled.section`
   align-items: center;
 
   span {
-    margin: 0 15px;
+    margin: 0 10px;
 
     font-weight: bold;
     color: #fff;
@@ -95,7 +95,7 @@ const StyledHeader = styled.header`
   background-color: #000;
 
   ${Layout}:nth-of-type(1) {
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1400px) {
       flex-grow: 1;
       flex-shrink: 1;
     }
@@ -107,7 +107,7 @@ const StyledHeader = styled.header`
     padding: 10px;
     order: 2;
 
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1400px) {
       width: 100%;
       flex: auto;
       order: 3;
@@ -126,12 +126,12 @@ const StyledHeader = styled.header`
       margin: 5px;
     }
 
-    @media screen and (max-width: 1440px) {
+    @media screen and (max-width: 1400px) {
       order: 2;
     }
   }
 
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1400px) {
     flex-wrap: wrap;
     min-height: 90px;
     padding: 23px 10px;
