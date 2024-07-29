@@ -14,7 +14,6 @@ const HEADER: Constant = {
   ],
   GROUP_LIST: ["런칭", "베스트", "스타일", "기획전", "이벤트"],
 };
-
 const SIDEBAR: Constant = {
   CATEGORY_LIST: [
     "전체",
@@ -28,5 +27,7 @@ const SIDEBAR: Constant = {
   ],
   FILTER_LIST: ["브랜드", "시즌", "추천", "색상", "혜택", "가격", "할인율"],
 };
+const SERVER_URI = "http://localhost:3000";
+const ERROR_MESSAGE = "네트워크 오류가 발생하였습니다.";
 
-export { HEADER, SIDEBAR };
+export { HEADER, SIDEBAR, SERVER_URI, ERROR_MESSAGE };
