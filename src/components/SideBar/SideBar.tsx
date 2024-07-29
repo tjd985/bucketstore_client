@@ -3,8 +3,9 @@ import { nanoid } from "nanoid";
 import { IoIosRefresh } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
-import { SIDEBAR } from "../../constants/constants.ts";
 import FilterContent from "./FilterContent/FilterContent.tsx";
+
+import { SIDEBAR } from "../../constants/constants.ts";
 
 const { CATEGORY_LIST, FILTER_LIST } = SIDEBAR;
 
