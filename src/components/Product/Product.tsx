@@ -8,12 +8,12 @@ import Loading from "../shared/Loading.tsx";
 import useProductData from "../../hooks/useProductData.ts";
 
 import Type from "../../types/Params.ts";
-import Badge from "../../types/Product.ts";
+import ProductType from "../../types/Product.ts";
 
 function Product() {
   const [type, setType] = useState<Type>("newest");
   const [page, setPage] = useState(1);
-  const [products, errorMessage, isLoading, isError] = useProductData(
+  const [productInformation, errorMessage, isLoading, isError] = useProductData(
     type,
     page,
   );
@@ -29,7 +29,7 @@ function Product() {
   return (
     <ProductLayout>
       <CardContainer>
-        {products.map((product: Badge) => {
+        {productInformation.products.map((product: ProductType) => {
           const { url, name, price } = product;
           const { real, tag } = price;
 

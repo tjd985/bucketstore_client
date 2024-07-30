@@ -15,7 +15,7 @@ type Badge = {
   isAuto: boolean;
 };
 
-type Product = {
+type ProductType = {
   code: string;
   name: string;
   statusCode: string;
@@ -33,4 +33,4 @@ type Product = {
   };
 };
 
-export default Product;
+export default ProductType;
