@@ -50,10 +50,6 @@ const DescriptionSection = styled(ImageSection)`
     font-size: 0.9rem;
   }
 
-  .product_name {
-    text-overflow: ellipsis;
-  }
-
   .sell_price {
     margin-right: 5px;
 
