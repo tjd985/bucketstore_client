@@ -3,8 +3,12 @@ import { useState, useEffect } from "react";
 import { SERVER_URI, ERROR_MESSAGE } from "../constants/constants.ts";
 
 import Badge from "../types/Product.ts";
+import APIresult from "../types/APIresult.ts";
 
-function useProductData(type: string, page: number) {
+function useProductData(
+  type: string,
+  page: number,
+): [Badge[], string, boolean, boolean] {
   const [products, setProducts] = useState<Badge[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
@@ -12,29 +16,36 @@ function useProductData(type: string, page: number) {
 
   useEffect(() => {
     async function fetchProduct() {
+      setIsLoading(true);
+      setIsError(false);
+
       const response = await fetch(
         `${SERVER_URI}/products/type/${type}/page/${page}`,
         {
           method: "GET",
         },
       );
-      const result = await response.json();
+      const result: APIresult = await response.json();
 
       if (result.status !== "200") {
+        if (!result.message) {
+          return;
+        }
+
         setIsError(true);
-        setErrorMessage(result.messge);
+        setErrorMessage(result.message);
+      }
+
+      if (!result.content) {
+        return;
       }
 
       setProducts(result.content.body);
+      setIsLoading(false);
     }
 
     try {
-      setIsLoading(true);
-      setIsError(false);
-
       fetchProduct();
-
-      setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
       setIsError(true);
