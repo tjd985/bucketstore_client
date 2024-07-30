@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { RiArrowUpDownLine } from "react-icons/ri";
+
 import { nanoid } from "nanoid";
 
 import Card from "./Card/Card.tsx";
@@ -28,6 +30,13 @@ function Product() {
 
   return (
     <ProductLayout>
+      <SortingLayout>
+        <span>{productInformation.totalLength}개</span>
+        <SortingButtonWrapper>
+          <SortingButton>최신순</SortingButton>
+          <RiArrowUpDownLine className="sorting_icon" />
+        </SortingButtonWrapper>
+      </SortingLayout>
       <CardContainer>
         {productInformation.products.map((product: ProductType) => {
           const { url, name, price } = product;
@@ -58,6 +67,42 @@ const ProductLayout = styled.section`
   width: 100%;
   height: calc(100vh - 127px);
   padding: 0 20px;
+`;
+
+const SortingLayout = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+
+  font-weight: bold;
+`;
+
+const SortingButtonWrapper = styled.div`
+  position: relative;
+
+  width: 120px;
+
+  .sorting_icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+const SortingButton = styled.button`
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 30px;
+  border: none;
+
+  text-align: left;
+  cursor: pointer;
 `;
 
 const CardContainer = styled.section`
