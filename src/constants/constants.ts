@@ -29,13 +29,27 @@ const FILTER_LIST = [
 ] as const;
 const SERVER_URI = "http://localhost:3000";
 const ERROR_MESSAGE = "네트워크 오류가 발생하였습니다.";
-const SORTING_LIST = [
+const SORTING_LIST_KR = [
   "최신순",
   "낮은 가격순",
   "높은 가격순",
   "할인율 높은순",
   "판매 인기순",
 ] as const;
+const SORTING_LIST_EN = [
+  "newest",
+  "low_pridce",
+  "high_price",
+  "high_discount_rate",
+  "best",
+] as const;
+const SORTING_MAP = {
+  최신순: "newest",
+  "낮은 가격순": "low_price",
+  "높은 가격순": "high_price",
+  "할인율 높은순": "high_discount_rate",
+  "판매 인기순": "best",
+};
 
 export {
   MENU_LIST,
@@ -44,5 +58,7 @@ export {
   FILTER_LIST,
   SERVER_URI,
   ERROR_MESSAGE,
-  SORTING_LIST,
+  SORTING_LIST_KR,
+  SORTING_LIST_EN,
+  SORTING_MAP,
 };
