@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 
 type CardParams = {
@@ -61,4 +62,4 @@ const DescriptionSection = styled(ImageSection)`
   }
 `;
 
-export default Card;
+export default memo(Card);
