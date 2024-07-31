@@ -37,5 +37,6 @@ module.exports = {
     "no-unused-vars": "off",
     "no-restricted-syntax": "off",
     "no-continue": "off",
+    "react/jsx-no-bind": "off",
   },
 };
