@@ -5,9 +5,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 
 import FilterContent from "./FilterContent/FilterContent.tsx";
 
-import { SIDEBAR } from "../../constants/constants.ts";
-
-const { CATEGORY_LIST, FILTER_LIST } = SIDEBAR;
+import { CATEGORY_LIST, FILTER_LIST } from "../../constants/constants.ts";
 
 function SideBar() {
   return (

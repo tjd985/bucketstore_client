@@ -2,9 +2,7 @@ import styled from "styled-components";
 import { nanoid } from "nanoid";
 import { CiSearch, CiLogin, CiShoppingBasket } from "react-icons/ci";
 
-import { HEADER } from "../../constants/constants.ts";
-
-const { MENU_LIST, GROUP_LIST } = HEADER;
+import { MENU_LIST, GROUP_LIST } from "../../constants/constants.ts";
 
 function Header() {
   return (
