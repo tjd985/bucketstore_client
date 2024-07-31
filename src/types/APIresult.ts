@@ -20,4 +20,4 @@ type APIresult = {
   message?: string;
 };
 
-export default APIresult;
+export type { APIresult, Meta };
