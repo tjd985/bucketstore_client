@@ -11,13 +11,18 @@ import {
 import { APIresult } from "../types/APIresult.ts";
 import { SortingTypeKR, SortingTypeEN } from "../types/Constant.ts";
 
-function useFetchStatus(type: SortingTypeKR, page: number): [boolean, string] {
+function useFetchStatus(
+  type: SortingTypeKR,
+  page: number,
+): [boolean, boolean, string] {
   const { setNestedProducts, setNewProducts } = useProductsStore();
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function fetchProduct() {
+      setIsLoading(true);
       setIsError(false);
 
       const sortingType = SORTING_MAP[type] as SortingTypeEN;
@@ -47,17 +52,20 @@ function useFetchStatus(type: SortingTypeKR, page: number): [boolean, string] {
       } else {
         setNestedProducts(result.content);
       }
+
+      setIsLoading(false);
     }
 
     try {
       fetchProduct();
     } catch (err) {
+      setIsLoading(false);
       setIsError(true);
       setErrorMessage(ERROR_MESSAGE);
     }
   }, [type, page]);
 
-  return [isError, errorMessage];
+  return [isLoading, isError, errorMessage];
 }
 
 export default useFetchStatus;
