@@ -1,23 +1,25 @@
-import { useState, MouseEvent, SetStateAction, Dispatch } from "react";
+import { useState, MouseEvent } from "react";
 import styled from "styled-components";
 import { RiArrowUpDownLine } from "react-icons/ri";
+
+import useParamsStore from "../../../store/params.ts";
 
 import { SORTING_LIST_KR } from "../../../constants/constants.ts";
 import { SortingTypeKR } from "../../../types/Constant.ts";
 
-function SortingButton({
-  type,
-  handleChangeType,
-}: {
-  type: SortingTypeKR;
-  handleChangeType: Dispatch<SetStateAction<SortingTypeKR>>;
-}) {
+function SortingButton() {
   const [isClicked, setIsClicked] = useState(false);
+  const { type, setType, clearPage } = useParamsStore();
 
   function handleSortingClick(ev: MouseEvent<HTMLElement>) {
     const listEl = ev.target as HTMLElement;
 
-    handleChangeType(listEl.innerText as SortingTypeKR);
+    if (listEl.tagName === "UL") {
+      return;
+    }
+
+    setType(listEl.innerText as SortingTypeKR);
+    clearPage();
     setIsClicked(!isClicked);
   }
 
