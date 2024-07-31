@@ -1,19 +1,23 @@
-import { useState, MouseEvent } from "react";
+import { useState, MouseEvent, SetStateAction, Dispatch } from "react";
 import styled from "styled-components";
 import { RiArrowUpDownLine } from "react-icons/ri";
 
-import { SORTING_LIST } from "../../../constants/constants.ts";
+import { SORTING_LIST_KR } from "../../../constants/constants.ts";
+import { SortingTypeKR } from "../../../types/Constant.ts";
 
-import { SortingType } from "../../../types/Constant.ts";
-
-function SortingButton() {
-  const [sortingValue, setSortingValue] = useState<SortingType>("최신순");
+function SortingButton({
+  type,
+  handleChangeType,
+}: {
+  type: SortingTypeKR;
+  handleChangeType: Dispatch<SetStateAction<SortingTypeKR>>;
+}) {
   const [isClicked, setIsClicked] = useState(false);
 
   function handleSortingClick(ev: MouseEvent<HTMLElement>) {
     const listEl = ev.target as HTMLElement;
 
-    setSortingValue(listEl.innerText as SortingType);
+    handleChangeType(listEl.innerText as SortingTypeKR);
     setIsClicked(!isClicked);
   }
 
@@ -24,12 +28,12 @@ function SortingButton() {
           setIsClicked(!isClicked);
         }}
       >
-        {sortingValue}
+        {type}
       </Button>
       <RiArrowUpDownLine className="sorting_icon" />
       {isClicked && (
         <SortingList onClick={handleSortingClick}>
-          {SORTING_LIST.map((sorting: SortingType) => {
+          {SORTING_LIST_KR.map((sorting: SortingTypeKR) => {
             return (
               <li key={sorting} value={sorting}>
                 {sorting}

@@ -1,26 +1,24 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { nanoid } from "nanoid";
-
 import Card from "./Card/Card.tsx";
 import Loading from "../shared/Loading.tsx";
 import SortingButton from "./Sorting/Sorting.tsx";
 
-import useProductData from "../../hooks/useProductData.ts";
+import useProductsStore from "../../store/products.ts";
+import useFetchStatus from "../../hooks/useFetchStatus.ts";
 
-import Type from "../../types/Params.ts";
 import ProductType from "../../types/Product.ts";
+import { SortingTypeKR } from "../../types/Constant.ts";
 
 function Product() {
-  const [type, setType] = useState<Type>("newest");
-  const [page, setPage] = useState(1);
-  const [productInformation, errorMessage, isLoading, isError] = useProductData(
-    type,
-    page,
-  );
+  const [type, setType] = useState<SortingTypeKR>("최신순");
+  const [page, setPage] = useState<number>(1);
 
-  if (isLoading) {
+  const { products } = useProductsStore();
+  const [isError, errorMessage] = useFetchStatus(type, page);
+
+  if (!products.productList.length) {
     return (
       <ProductLayout>
         <Loading />
@@ -31,17 +29,17 @@ function Product() {
   return (
     <ProductLayout>
       <SortingLayout>
-        <span>{productInformation.totalLength}개</span>
-        <SortingButton />
+        <span>{products.totalLength}개</span>
+        <SortingButton type={type} handleChangeType={setType} />
       </SortingLayout>
       <CardContainer>
-        {productInformation.products.map((product: ProductType) => {
-          const { url, name, price } = product;
+        {products.productList.map((product: ProductType) => {
+          const { url, name, price, code } = product;
           const { real, tag } = price;
 
           return (
             <Card
-              key={nanoid(10)}
+              key={code}
               imagePath={url}
               name={name}
               tagPrice={tag}
