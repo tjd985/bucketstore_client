@@ -50,6 +50,7 @@ const SORTING_MAP = {
   "할인율 높은순": "high_discount_rate",
   "판매 인기순": "best",
 };
+const SCROLL_REQUEST_POINT = 100;
 
 export {
   MENU_LIST,
@@ -61,4 +62,5 @@ export {
   SORTING_LIST_KR,
   SORTING_LIST_EN,
   SORTING_MAP,
+  SCROLL_REQUEST_POINT,
 };

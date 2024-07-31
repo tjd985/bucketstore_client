@@ -3,13 +3,15 @@ import { throttle } from "lodash";
 
 import useParamsStore from "../store/params.ts";
 
+import { SCROLL_REQUEST_POINT } from "../constants/constants.ts";
+
 function useScroll() {
   const [canRequest, setCanRequest] = useState<boolean>(false);
   const { increasePage } = useParamsStore();
 
   function calculateEnd() {
     if (
-      window.innerHeight + window.scrollY + 200 >=
+      window.innerHeight + window.scrollY + SCROLL_REQUEST_POINT >=
       document.body.offsetHeight
     ) {
       setCanRequest(true);
