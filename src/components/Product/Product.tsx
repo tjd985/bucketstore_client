@@ -1,36 +1,27 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 import Card from "./Card/Card.tsx";
 import Loading from "../shared/Loading.tsx";
-import SortingButton from "./Sorting/Sorting.tsx";
+import SortingButton from "./SortingButton/SortingButton.tsx";
 
 import useProductsStore from "../../store/products.ts";
+import useParamsStore from "../../store/params.ts";
 import useFetchStatus from "../../hooks/useFetchStatus.ts";
+import useScroll from "../../hooks/useScroll.ts";
 
 import ProductType from "../../types/Product.ts";
-import { SortingTypeKR } from "../../types/Constant.ts";
 
 function Product() {
-  const [type, setType] = useState<SortingTypeKR>("최신순");
-  const [page, setPage] = useState<number>(1);
-
+  const { type, page } = useParamsStore();
   const { products } = useProductsStore();
-  const [isError, errorMessage] = useFetchStatus(type, page);
-
-  if (!products.productList.length) {
-    return (
-      <ProductLayout>
-        <Loading />
-      </ProductLayout>
-    );
-  }
+  const [isLoading, isError, errorMessage] = useFetchStatus(type, page);
+  useScroll();
 
   return (
     <ProductLayout>
       <SortingLayout>
         <span>{products.totalLength}개</span>
-        <SortingButton type={type} handleChangeType={setType} />
+        <SortingButton />
       </SortingLayout>
       <CardContainer>
         {products.productList.map((product: ProductType) => {
@@ -48,6 +39,7 @@ function Product() {
           );
         })}
       </CardContainer>
+      {isLoading && <Loading />}
     </ProductLayout>
   );
 }
@@ -60,7 +52,6 @@ const ProductLayout = styled.section`
   flex-shrink: 1;
   flex-grow: 1;
   width: 100%;
-  height: calc(100vh - 127px);
   padding: 0 20px;
 `;
 
