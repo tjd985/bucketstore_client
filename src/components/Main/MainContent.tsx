@@ -1,13 +1,10 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-import MobileCategory from "../Mobile/MobileCategory.tsx";
-
 function MainContent({ children }: { children: ReactNode }) {
   return (
     <MainLayout>
       <section className="product_title">티셔츠</section>
-      <MobileCategory />
       <ContentsLayout>{children}</ContentsLayout>
     </MainLayout>
   );

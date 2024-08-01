@@ -12,7 +12,7 @@ function MobileFloatingFilter() {
 
 const FilterButton = styled.button`
   position: absolute;
-  top: -60px;
+  top: -50px;
 
   display: flex;
   justify-content: center;
