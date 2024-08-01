@@ -30,6 +30,7 @@ const MobileCategorySection = styled.section`
   padding: 16px 0 16px 20px;
 
   background-color: #ffffff;
+  white-space: nowrap;
 
   @media screen and (max-width: 1024px) {
     display: flex;
