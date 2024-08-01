@@ -1,7 +1,10 @@
 import { create } from "zustand";
 
-import ProductType from "../types/Product.ts";
+import isOwnProperty from "../utils/isOwnProperty.ts";
+
+import { ProductType, Badge } from "../types/Product.ts";
 import { Meta } from "../types/APIresult.ts";
+import CustomProduct from "../types/CustomProduct.ts";
 
 type Information = {
   meta: Meta;
@@ -10,7 +13,7 @@ type Information = {
 
 type Products = {
   totalLength: number;
-  productList: ProductType[];
+  productList: CustomProduct[];
 };
 
 type ProductsStore = {
@@ -26,8 +29,43 @@ const useProductsStore = create<ProductsStore>()(set => ({
     set(state => {
       const { meta, body } = information;
 
+      const newProductList = body.map(product => {
+        const { url, name, price, code, badges } = product;
+        const { real, tag } = price;
+
+        const newProduct: CustomProduct = {
+          imagePath: url,
+          name,
+          code,
+          tagPrice: tag,
+          realPrice: real,
+          badgeNameList: [],
+        };
+
+        if (!badges) {
+          return newProduct;
+        }
+
+        for (const badgeType in badges) {
+          if (isOwnProperty(badges, badgeType)) {
+            const currentBadge = badges[badgeType as keyof typeof badges];
+
+            if (!currentBadge.length) {
+              continue;
+            }
+
+            newProduct.badgeNameList.push(currentBadge[0].name);
+          }
+        }
+
+        return newProduct;
+      });
+
       state.products.totalLength = meta.pageInfo.total;
-      state.products.productList = [...state.products.productList, ...body];
+      state.products.productList = [
+        ...state.products.productList,
+        ...newProductList,
+      ];
 
       return { ...state };
     }),
@@ -35,8 +73,42 @@ const useProductsStore = create<ProductsStore>()(set => ({
     set(state => {
       const { meta, body } = information;
 
+      const newProductList = body.map(product => {
+        const { url, name, price, code, badges } = product;
+        const { real, tag } = price;
+
+        const newProduct: CustomProduct = {
+          imagePath: url,
+          name,
+          code,
+          tagPrice: tag,
+          realPrice: real,
+          badgeNameList: [],
+        };
+
+        if (!badges) {
+          return newProduct;
+        }
+
+        for (const badgeType in badges) {
+          if (isOwnProperty(badges, badgeType)) {
+            const currentBadge = badges[
+              badgeType as keyof typeof badges
+            ] as Badge[];
+
+            if (!currentBadge.length) {
+              continue;
+            }
+
+            newProduct.badgeNameList.push(currentBadge[0].name);
+          }
+        }
+
+        return newProduct;
+      });
+
       state.products.totalLength = meta.pageInfo.total;
-      state.products.productList = body;
+      state.products.productList = newProductList;
 
       return { ...state };
     }),
