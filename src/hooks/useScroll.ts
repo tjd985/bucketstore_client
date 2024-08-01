@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { throttle } from "lodash";
 
 import useParamsStore from "../store/params.ts";
+import useScrollStore from "../store/scroll.ts";
 
 import { SCROLL_REQUEST_POINT } from "../constants/constants.ts";
 
 function useScroll() {
   const [canRequest, setCanRequest] = useState<boolean>(false);
+  const [beforeScroll, setBeforeScroll] = useState<number>(0);
   const { increasePage } = useParamsStore();
+  const { setScrollDirection } = useScrollStore();
 
   function calculateEnd() {
     if (
@@ -20,13 +23,33 @@ function useScroll() {
     return false;
   }
 
+  function getScrollDirection() {
+    if (beforeScroll < window.scrollY) {
+      setScrollDirection("DOWN");
+    } else {
+      setScrollDirection("UP");
+    }
+
+    setBeforeScroll(window.scrollY);
+  }
+
   useEffect(() => {
     const throttledCaclulateEnd = throttle(calculateEnd, 1000);
 
     window.addEventListener("scroll", throttledCaclulateEnd);
 
-    return window.removeEventListener("scorll", throttledCaclulateEnd);
+    return () => {
+      window.removeEventListener("scorll", throttledCaclulateEnd);
+    };
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", getScrollDirection);
+
+    return () => {
+      window.removeEventListener("scroll", getScrollDirection);
+    };
+  }, [beforeScroll]);
 
   useEffect(() => {
     if (canRequest) {
