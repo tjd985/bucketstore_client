@@ -41,6 +41,10 @@ const StyledSideBar = styled.section`
   flex-direction: column;
   height: calc(100vh - 127px);
   margin-right: 40px;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 const CategoryLayout = styled.section`
