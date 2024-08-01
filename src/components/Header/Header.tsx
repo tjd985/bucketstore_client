@@ -83,12 +83,14 @@ const VertivalBar = styled.section`
 `;
 
 const StyledHeader = styled.header`
-  box-sizing: border-box;
+  position: sticky;
+  top: 0;
 
   display: flex;
   justify-content: space-between;
   align-content: center;
   padding: 23px 10px;
+  z-index: 6;
 
   background-color: #000;
 

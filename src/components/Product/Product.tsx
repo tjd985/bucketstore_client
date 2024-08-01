@@ -70,6 +70,10 @@ const CardContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(4, minmax(0px, 1fr));
   gap: 80px 1px;
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
 `;
 
 export default Product;

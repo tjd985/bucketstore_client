@@ -73,6 +73,11 @@ const ImageSection = styled.section`
   width: 100%;
 
   background-color: #f4f4f4;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 const DescriptionSection = styled.section`
