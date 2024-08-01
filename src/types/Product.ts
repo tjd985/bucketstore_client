@@ -30,7 +30,7 @@ type ProductType = {
     custom: Badge[];
     attribute: Badge[];
     recommend: Badge[];
-  };
+  } | null;
 };
 
-export default ProductType;
+export type { ProductType, Badge };
