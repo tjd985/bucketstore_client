@@ -28,7 +28,7 @@ function Card({
           setIsFavorite(!isFavorite);
         }}
       >
-        {isFavorite ? <FaHeart /> : <FaRegHeart />}
+        {isFavorite ? <FaHeart /> : <FaRegHeart className="empty_heart" />}
       </FavoriteSection>
       <ImageSection className="image_section">
         <img src={imagePath} alt={`${name}이미지`} width="100%" />
@@ -64,6 +64,10 @@ const FavoriteSection = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
+
+  .empty_heart {
+    color: #a8a8a8;
+  }
 `;
 
 const ImageSection = styled.section`
@@ -75,8 +79,9 @@ const ImageSection = styled.section`
   background-color: #f4f4f4;
 
   img {
-    height: 100%;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 
