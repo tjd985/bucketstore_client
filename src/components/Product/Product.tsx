@@ -9,7 +9,7 @@ import useParamsStore from "../../store/params.ts";
 import useFetchStatus from "../../hooks/useFetchStatus.ts";
 import useScroll from "../../hooks/useScroll.ts";
 
-import ProductType from "../../types/Product.ts";
+import CustomProduct from "../../types/CustomProduct.ts";
 
 function Product() {
   const { type, page } = useParamsStore();
@@ -24,17 +24,18 @@ function Product() {
         <SortingButton />
       </SortingLayout>
       <CardContainer>
-        {products.productList.map((product: ProductType) => {
-          const { url, name, price, code } = product;
-          const { real, tag } = price;
+        {products.productList.map((product: CustomProduct) => {
+          const { imagePath, name, code, tagPrice, realPrice, badgeNameList } =
+            product;
 
           return (
             <Card
               key={code}
-              imagePath={url}
+              imagePath={imagePath}
               name={name}
-              tagPrice={tag}
-              sellPrice={real}
+              tagPrice={tagPrice}
+              sellPrice={realPrice}
+              badgeNameList={badgeNameList}
             />
           );
         })}
