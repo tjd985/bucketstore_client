@@ -2,7 +2,7 @@ import { Reset } from "styled-reset";
 import styled from "styled-components";
 
 import Header from "./components/Header/Header.tsx";
-import MainContent from "./components/Main/MainContent.tsx";
+import MainContent from "./components/MainContent/MainContent.tsx";
 import SideBar from "./components/SideBar/SideBar.tsx";
 import Product from "./components/Product/Product.tsx";
 import MobileHeader from "./components/Mobile/MobileHeader.tsx";

@@ -1,11 +1,14 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
+import TopButton from "../shared/TopButton.tsx";
+
 function MainContent({ children }: { children: ReactNode }) {
   return (
     <MainLayout>
       <section className="product_title">티셔츠</section>
       <ContentsLayout>{children}</ContentsLayout>
+      <TopButton />
     </MainLayout>
   );
 }
