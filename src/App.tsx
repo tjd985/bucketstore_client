@@ -6,7 +6,7 @@ import MainContent from "./components/Main/MainContent.tsx";
 import SideBar from "./components/SideBar/SideBar.tsx";
 import Product from "./components/Product/Product.tsx";
 import MobileHeader from "./components/Mobile/MobileHeader.tsx";
-import MobileBottomBar from "./components/Mobile/MobileBottomBar/MobileBottomBar.tsx";
+import MobileBottomBar from "./components/Mobile/MobileBottomBar.tsx";
 
 function App() {
   return (
