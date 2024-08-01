@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
+import useScrollStore from "../../store/scroll.ts";
+
 import { CATEGORY_LIST } from "../../constants/constants.ts";
 
 function MobileCategory() {
+  const { scroll } = useScrollStore();
+
   return (
-    <MobileCategorySection>
+    <MobileCategorySection className={scroll === "UP" ? "NONE" : "STICKY"}>
       {CATEGORY_LIST.map(category => {
         return (
           <CategoryItem key={category} className="category">
@@ -17,16 +21,20 @@ function MobileCategory() {
 }
 
 const MobileCategorySection = styled.section`
+  position: absolute;
+  top: 100%;
+  box-sizing: border-box;
+
   display: none;
+  width: 100%;
+  padding: 16px 0 16px 20px;
+
+  background-color: #ffffff;
 
   @media screen and (max-width: 1024px) {
-    box-sizing: border-box;
-
-    width: 100%;
     display: flex;
     justify-content: flex-start;
     gap: 5px;
-    padding: 16px 0 16px 20px;
   }
 `;
 

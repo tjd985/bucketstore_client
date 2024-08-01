@@ -6,6 +6,8 @@ import { AiOutlineUser } from "react-icons/ai";
 
 import MobileFloatingFilter from "./MobileFloatingFilter.tsx";
 
+import useScrollStore from "../../store/scroll.ts";
+
 const BottomBarButtons = [
   { icon: <CiMenuBurger className="menu icon" />, label: "메뉴" },
   { icon: <IoPricetagOutline className="tag icon" />, label: "브랜드" },
@@ -15,8 +17,10 @@ const BottomBarButtons = [
 ];
 
 function MobileBottomBar() {
+  const { scroll } = useScrollStore();
+
   return (
-    <MobileBottomLayout>
+    <MobileBottomLayout className={scroll === "UP" ? "SHOW" : "HIDE"}>
       {BottomBarButtons.map(({ icon, label }) => {
         return (
           <BarItem key={label}>
@@ -45,6 +49,11 @@ const MobileBottomLayout = styled.section`
     align-items: center;
     background-color: #000;
     padding: 15px 10px 9px;
+    transition: transform 0.3s ease-in-out;
+
+    &.HIDE {
+      transform: translateY(100%);
+    }
   }
 `;
 
