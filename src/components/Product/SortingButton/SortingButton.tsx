@@ -85,6 +85,7 @@ const SortingList = styled.ul`
   width: 100%;
   padding: 5px;
   border: 1px solid #e7e7e7;
+  z-index: 5;
 
   font-weight: normal;
   background-color: #ffffff;
