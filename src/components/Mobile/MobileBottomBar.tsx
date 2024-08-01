@@ -4,6 +4,8 @@ import { IoPricetagOutline, IoHomeOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { AiOutlineUser } from "react-icons/ai";
 
+import MobileFloatingFilter from "./MobileFloatingFilter.tsx";
+
 const BottomBarButtons = [
   { icon: <CiMenuBurger className="menu icon" />, label: "메뉴" },
   { icon: <IoPricetagOutline className="tag icon" />, label: "브랜드" },
@@ -23,6 +25,7 @@ function MobileBottomBar() {
           </BarItem>
         );
       })}
+      <MobileFloatingFilter />
     </MobileBottomLayout>
   );
 }
