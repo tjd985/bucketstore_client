@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { nanoid } from "nanoid";
 import { IoIosRefresh } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 
@@ -12,12 +11,11 @@ function SideBar() {
     <StyledSideBar>
       <CategoryLayout>
         {CATEGORY_LIST.map(category => {
-          return <span key={nanoid(10)}>{category}</span>;
+          return <span key={category}>{category}</span>;
         })}
       </CategoryLayout>
       <FilterLayout>
         <FilterContent
-          key={nanoid(10)}
           contentName="FILTER"
           background="#000000"
           fontColor="#ffffff"
@@ -26,7 +24,7 @@ function SideBar() {
         </FilterContent>
         {FILTER_LIST.map(filterValue => {
           return (
-            <FilterContent key={nanoid(10)} contentName={filterValue}>
+            <FilterContent key={filterValue} contentName={filterValue}>
               <RiArrowDropDownLine />
             </FilterContent>
           );

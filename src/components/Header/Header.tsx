@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { nanoid } from "nanoid";
 import { CiSearch, CiLogin, CiShoppingBasket } from "react-icons/ci";
 
 import { MENU_LIST, GROUP_LIST } from "../../constants/constants.ts";
@@ -18,7 +17,7 @@ function Header() {
         <Container>
           {MENU_LIST.map(menu => {
             return (
-              <span className={menu.split(" ").join("_")} key={nanoid(10)}>
+              <span className={menu.split(" ").join("_")} key={menu}>
                 {menu}
               </span>
             );
@@ -28,7 +27,7 @@ function Header() {
         <Container>
           {GROUP_LIST.map(group => {
             return (
-              <span className={group} key={nanoid(10)}>
+              <span className={group} key={group}>
                 {group}
               </span>
             );
