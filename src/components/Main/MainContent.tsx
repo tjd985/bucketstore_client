@@ -1,10 +1,13 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
+import MobileCategory from "../Mobile/MobileCategory.tsx";
+
 function MainContent({ children }: { children: ReactNode }) {
   return (
     <MainLayout>
       <section className="product_title">티셔츠</section>
+      <MobileCategory />
       <ContentsLayout>{children}</ContentsLayout>
     </MainLayout>
   );
@@ -32,6 +35,14 @@ const MainLayout = styled.section`
     font-size: 90px;
     font-weight: 600;
     line-height: 108px;
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding: 0;
   }
 `;
 
