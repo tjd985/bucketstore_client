@@ -8,7 +8,7 @@ function Header() {
     <StyledHeader>
       <Layout>
         <img
-          src="/src/assets/header_logo.png"
+          src="/assets/header_logo.png"
           alt="버킷스토어 로고 이미지"
           height="100%"
         />
