@@ -14,7 +14,13 @@ export default defineConfig({
     environment: "jsdom",
     coverage: {
       all: true,
-      exclude: ["*.config.ts", "*.cjs", "**/main.tsx", "**/constants.ts"],
+      exclude: [
+        "*.config.ts",
+        "*.cjs",
+        "**/main.tsx",
+        "**/constants.ts",
+        "./src/types/*.ts",
+      ],
       provider: "v8",
       reporter: ["text", "json", "html"],
       reportsDirectory: "./coverage",
