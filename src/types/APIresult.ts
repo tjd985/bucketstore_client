@@ -1,7 +1,7 @@
-import Product from "./Product.ts";
+import { ProductType } from "./Product.ts";
 
 type Meta = {
-  checksum: number | null;
+  checkSum: number | null;
   pageInfo: {
     page: number;
     pages: number;
@@ -15,7 +15,7 @@ type APIresult = {
   status: string;
   content?: {
     meta: Meta;
-    body: Product[];
+    body: ProductType[];
   };
   message?: string;
 };
