@@ -22,11 +22,12 @@ const StyledTopButton = styled.button`
   position: fixed;
   bottom: 80px;
   right: 20px;
-
   z-index: 10;
-  background-color: transparent;
+
   border: none;
   transition-duration: 0.3s;
+
+  background-color: transparent;
 
   cursor: pointer;
 

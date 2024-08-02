@@ -84,12 +84,12 @@ const VertivalBar = styled.section`
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
+  z-index: 6;
 
   display: flex;
   justify-content: space-between;
   align-content: center;
   padding: 23px 10px;
-  z-index: 6;
 
   background-color: #000;
 

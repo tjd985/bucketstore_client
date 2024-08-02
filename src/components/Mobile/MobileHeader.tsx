@@ -26,6 +26,7 @@ function MobileHeader() {
 const MobileHeaderSection = styled.section`
   position: sticky;
   top: 0;
+  z-index: 6;
 
   display: none;
   width: 100%;
@@ -33,7 +34,6 @@ const MobileHeaderSection = styled.section`
   height: 56px;
   transition: transform 0.3s ease-in-out;
   margin-bottom: 63px;
-  z-index: 6;
 
   background-color: #ffffff;
 

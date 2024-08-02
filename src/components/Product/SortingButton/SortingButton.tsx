@@ -77,6 +77,7 @@ const Button = styled.button`
 const SortingList = styled.ul`
   position: absolute;
   top: 30px;
+  z-index: 5;
 
   display: flex;
   flex-direction: column;
@@ -85,7 +86,6 @@ const SortingList = styled.ul`
   width: 100%;
   padding: 5px;
   border: 1px solid #e7e7e7;
-  z-index: 5;
 
   font-weight: normal;
   background-color: #ffffff;
