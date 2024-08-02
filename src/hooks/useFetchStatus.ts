@@ -53,15 +53,16 @@ function useFetchStatus(
       } else {
         setNestedProducts(result.content);
       }
+
+      setIsLoading(false);
     }
 
     try {
       fetchProduct();
     } catch (err) {
       setIsError(true);
-      setErrorMessage(ERROR_MESSAGE);
-    } finally {
       setIsLoading(false);
+      setErrorMessage(ERROR_MESSAGE);
     }
   }, [type, page]);
 
