@@ -51,6 +51,7 @@ const SORTING_MAP = {
   "판매 인기순": "best",
 };
 const SCROLL_REQUEST_POINT = 100;
+const TOAST_TIME = 3000;
 
 export {
   MENU_LIST,
@@ -63,4 +64,5 @@ export {
   SORTING_LIST_EN,
   SORTING_MAP,
   SCROLL_REQUEST_POINT,
+  TOAST_TIME,
 };
