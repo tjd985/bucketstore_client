@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Card from "./Card/Card.tsx";
 import Loading from "../shared/Loading.tsx";
 import SortingButton from "./SortingButton/SortingButton.tsx";
+import Toast from "../shared/Toast.tsx";
 
 import useProductsStore from "../../store/products.ts";
 import useParamsStore from "../../store/params.ts";
@@ -41,6 +42,7 @@ function Product() {
         })}
       </CardContainer>
       {isLoading && <Loading />}
+      {isError && <Toast errorMessage={errorMessage} />}
     </ProductLayout>
   );
 }
