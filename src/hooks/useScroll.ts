@@ -4,7 +4,7 @@ import { throttle } from "lodash";
 import useParamsStore from "../store/params.ts";
 import useScrollStore from "../store/scroll.ts";
 
-import { SCROLL_REQUEST_POINT } from "../constants/constants.ts";
+import { SCROLL_REQUEST_POINT, THROTTLE_TIME } from "../constants/constants.ts";
 
 function useScroll() {
   const [canRequest, setCanRequest] = useState<boolean>(false);
@@ -13,14 +13,16 @@ function useScroll() {
   const { setScrollDirection } = useScrollStore();
 
   function calculateEnd() {
+    if (canRequest) {
+      return;
+    }
+
     if (
       window.innerHeight + window.scrollY + SCROLL_REQUEST_POINT >=
       document.body.offsetHeight
     ) {
       setCanRequest(true);
     }
-
-    return false;
   }
 
   function getScrollDirection() {
@@ -34,12 +36,12 @@ function useScroll() {
   }
 
   useEffect(() => {
-    const throttledCaclulateEnd = throttle(calculateEnd, 1000);
+    const throttledCaclulateEnd = throttle(calculateEnd, THROTTLE_TIME);
 
     window.addEventListener("scroll", throttledCaclulateEnd);
 
     return () => {
-      window.removeEventListener("scorll", throttledCaclulateEnd);
+      window.removeEventListener("scroll", throttledCaclulateEnd);
     };
   }, []);
 
