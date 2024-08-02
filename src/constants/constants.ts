@@ -52,6 +52,7 @@ const SORTING_MAP = {
 };
 const SCROLL_REQUEST_POINT = 100;
 const TOAST_TIME = 3000;
+const THROTTLE_TIME = 1000;
 
 export {
   MENU_LIST,
@@ -65,4 +66,5 @@ export {
   SORTING_MAP,
   SCROLL_REQUEST_POINT,
   TOAST_TIME,
+  THROTTLE_TIME,
 };
