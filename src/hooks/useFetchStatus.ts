@@ -6,6 +6,7 @@ import {
   SERVER_URI,
   ERROR_MESSAGE,
   SORTING_MAP,
+  TOAST_TIME,
 } from "../constants/constants.ts";
 
 import { APIresult } from "../types/APIresult.ts";
@@ -52,18 +53,35 @@ function useFetchStatus(
       } else {
         setNestedProducts(result.content);
       }
-
-      setIsLoading(false);
     }
 
     try {
       fetchProduct();
     } catch (err) {
-      setIsLoading(false);
       setIsError(true);
       setErrorMessage(ERROR_MESSAGE);
+    } finally {
+      setIsLoading(false);
     }
   }, [type, page]);
+
+  useEffect(() => {
+    let timer = 0;
+
+    if (isError) {
+      timer = setTimeout(() => {
+        setIsError(false);
+      }, TOAST_TIME);
+    }
+
+    return () => {
+      if (!timer) {
+        return;
+      }
+
+      clearTimeout(timer);
+    };
+  }, [isError]);
 
   return [isLoading, isError, errorMessage];
 }
