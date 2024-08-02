@@ -67,7 +67,7 @@ function useFetchStatus(
   }, [type, page]);
 
   useEffect(() => {
-    let timer = 0;
+    let timer: ReturnType<typeof setTimeout> | null = null;
 
     if (isError) {
       timer = setTimeout(() => {
